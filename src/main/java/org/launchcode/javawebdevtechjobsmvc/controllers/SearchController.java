@@ -25,6 +25,7 @@ public class SearchController {
 
     @RequestMapping(value = "results")
     public String displaySearchResults(Model model, @RequestParam String searchType, @RequestParam String searchTerm) {
+        model.addAttribute("columns", columnChoices);
         ArrayList<Job> jobs;
         if (searchTerm.toLowerCase().equals("all") || searchTerm.equals("")){
             jobs = JobData.findAll();
@@ -37,6 +38,6 @@ public class SearchController {
 
         return "search";
     }
-    // TODO #3 - Create a handler to process a search request and render the updated search view.
+
 
 }
